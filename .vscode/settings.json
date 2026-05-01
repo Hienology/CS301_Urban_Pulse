@@ -1,0 +1,13 @@
+{
+    "python-envs.defaultEnvManager": "ms-python.python:venv",
+    "chat.tools.terminal.autoApprove": {
+        "/^/workspaces/CS301_Urban_Pulse/\\.venv/bin/python main\\.py$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^docker build -t urban-pulse \\.$/": {
+            "approve": true,
+            "matchCommandLine": true
+        }
+    }
+}
