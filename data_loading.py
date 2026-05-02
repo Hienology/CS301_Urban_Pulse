@@ -30,7 +30,7 @@ def load_and_aggregate_data():
     shootings['BOROUGH'] = shootings['boro'].map(boro_map)
 
     # NYC Housing Sales
-    housing = pd.read_csv("https://data.cityofnewyork.us/resource/w2pb-icbu.csv?$select=borough,sale_date,sale_price,building_class_category&$where=sale_price>0+AND+sale_date>='2010-01-01'&$limit=200000", low_memory=False)
+    housing = pd.read_csv("https://data.cityofnewyork.us/resource/w2pb-icbu.csv?$select=borough,sale_date,sale_price,building_class_category,neighborhood&$where=sale_price>0+AND+sale_date>='2010-01-01'&$limit=200000", low_memory=False)
     housing['SALE_DATE'] = pd.to_datetime(housing['sale_date'], errors='coerce')
     housing['YEAR'] = housing['SALE_DATE'].dt.year
     housing['BOROUGH'] = housing['borough'].map({1:'M',2:'B',3:'K',4:'Q',5:'S'})
@@ -59,4 +59,4 @@ def load_and_aggregate_data():
     df = df.sort_values(['YEAR', 'BOROUGH']).reset_index(drop=True)
 
     print("✅ Data loaded and aggregated successfully!")
-    return df
+    return df, housing

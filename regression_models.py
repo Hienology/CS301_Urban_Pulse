@@ -105,7 +105,7 @@ def run_regression_models(df):
 
     # Save comparison plot
     plt.figure(figsize=(10, 6))
-    sns.barplot(data=results_df, x='RMSE ($)', y='Model', palette='viridis')
+    sns.barplot(data=results_df, x='RMSE ($)', y='Model', hue='Model', palette='viridis', legend=False)
     plt.title('Regression Model Comparison - RMSE (Lower is better)')
     plt.xlabel('RMSE ($)')
     plt.tight_layout()
